@@ -12,7 +12,7 @@ export class AppController {
     const employees =  await this.appService.getEmployees();
     console.log(employees)
     const result = JSON.stringify(employees);
-    return result;
+    return 'test';
   }
   @Post()
   createEmployess(@Body() employee: EmployeesDto): Promise<Employees> {

@@ -8,8 +8,8 @@ import { EmployeeHydrator } from './hydrators/employee.hydrator';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(configService.getTypeOrmConfig()),
-    TypeOrmModule.forFeature([Employees]),
+  //  TypeOrmModule.forRoot(configService.getTypeOrmConfig()),
+  //  TypeOrmModule.forFeature([Employees]),
   ],
   controllers: [AppController],
   providers: [AppService, EmployeeHydrator],
