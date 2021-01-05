@@ -1,0 +1,24 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "paladmin123!",
+    "database": "EmployeesData",
+    "entities": [
+        "src/**/*.entity{.ts,.js}"
+    ],
+    "migrationsRun": false,
+    "migrations": [
+        "src/migrations/**/*.ts"
+    ],
+    "migrationsTableName": "_migrations",
+    "cli": {
+        "migrationsDir": "src/migrations"
+    },
+    "subscribers": [
+        "src/subscribers/**/*.ts"
+    ],
+    "synchronize": true,
+    "schema": "dbo"
+}
