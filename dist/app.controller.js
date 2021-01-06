@@ -22,16 +22,13 @@ let AppController = class AppController {
         this.appService = appService;
     }
     async getEmployees() {
-        const employees = await this.appService.getEmployees();
-        console.log(employees);
-        const result = JSON.stringify(employees);
-        return 'test';
+        return this.appService.getEmployees();
     }
     createEmployess(employee) {
-        return this.appService.createEmployee(employee);
+        this.appService.createEmployee(employee);
     }
     updateEmployee(employee) {
-        return this.appService.updateEmployee(employee);
+        this.appService.updateEmployee(employee);
     }
 };
 __decorate([
@@ -45,14 +42,14 @@ __decorate([
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [employee_dto_1.EmployeesDto]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], AppController.prototype, "createEmployess", null);
 __decorate([
     common_1.Put(),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [employee_dto_1.EmployeesDto]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:returntype", void 0)
 ], AppController.prototype, "updateEmployee", null);
 AppController = __decorate([
     common_1.Controller(),

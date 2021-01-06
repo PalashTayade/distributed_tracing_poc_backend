@@ -2662,13 +2662,28 @@
         "affectsGlobalScope": false
       },
       "../src/dtos/employee.dto.ts": {
-        "version": "cbe7828f72c749f7b187e1d86004d9d81a4afc46cc4736386ea24d9424f109e4",
-        "signature": "b3783d043eb5371a18347b71e7aa2b7d6c5dd698630ec382c59b9acd951682df",
+        "version": "a2bd835ec31899c57e75e5a790ab731c0523a5cd723438f59790069c3c875275",
+        "signature": "5a49c9e8c9588217158d7d830829f8bbcf307b4e0dd1c99083d82852cc12ea85",
         "affectsGlobalScope": false
       },
-      "../src/hydrators/employee.hydrator.ts": {
-        "version": "991e1b7ee76babaed7ccb2fbcff1f0f2c7822b4ee2d39de37d07f4c52cb6ab3a",
-        "signature": "2396f1acb41faa03f7e20c9e34308f5258afba71157614981533de191dfc7962",
+      "../node_modules/@types/uuid/index.d.ts": {
+        "version": "96b49a9de749afcf92b5bce1d8cc42cfae6816cdf5ea36584fd9256b8b2e5292",
+        "signature": "96b49a9de749afcf92b5bce1d8cc42cfae6816cdf5ea36584fd9256b8b2e5292",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/json-2-csv/lib/converter.d.ts": {
+        "version": "5f5436c6c8899cbd8504982d14c4fe9cd9e28f67fbc5d23f2c4d4112e4f9da08",
+        "signature": "5f5436c6c8899cbd8504982d14c4fe9cd9e28f67fbc5d23f2c4d4112e4f9da08",
+        "affectsGlobalScope": false
+      },
+      "../src/app.service.ts": {
+        "version": "e6b281934d31e8e30780c62b46f115bdc0daee80a351f52b4fc5b9d1422a9d34",
+        "signature": "1ea49e3e69c3ecd5936d5c2966ba860a799dd9798f61d102cf5ba24d54f2b559",
+        "affectsGlobalScope": false
+      },
+      "../src/app.controller.ts": {
+        "version": "6690cf608f4f07a8b1926052ad5c6748310f5845a483f79b319d2191558f5f13",
+        "signature": "01b208e9ae239fa9919efd684df8791fc720ce4da1c679a6bb83d596c519758b",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/typeorm/dist/interfaces/entity-class-or-schema.type.d.ts": {
@@ -2716,19 +2731,14 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "affectsGlobalScope": false
       },
-      "../src/app.service.ts": {
-        "version": "175a4fdd50b0ba46103ebe7890e0820bc2c0098876ccf7d5d849a7e905a87cce",
-        "signature": "2149947922402a5bc2f59329ee5c7c01ddeaebb8059970b736662a07eef26a05",
-        "affectsGlobalScope": false
-      },
-      "../src/app.controller.ts": {
-        "version": "a044cd10f85d84390f02cfe4c74348d8f1d4c6a02fb7525f48127cab6527cd10",
-        "signature": "cd57eb7b7439557f14f09edb6434c1b30ea32176bc0766c5bad26f3a680e6dc3",
-        "affectsGlobalScope": false
-      },
       "../src/config/config.service.ts": {
         "version": "22f6b8f089a266c696251e5abac3294948546bfda41251115ed5a14706c170aa",
         "signature": "3a446aa7a19064c7398d4b98b64a395e7f2d05d68d9bcb71329197644cff01f0",
+        "affectsGlobalScope": false
+      },
+      "../src/hydrators/employee.hydrator.ts": {
+        "version": "991e1b7ee76babaed7ccb2fbcff1f0f2c7822b4ee2d39de37d07f4c52cb6ab3a",
+        "signature": "2396f1acb41faa03f7e20c9e34308f5258afba71157614981533de191dfc7962",
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
@@ -3340,6 +3350,51 @@
         "version": "08c4a97a324b82f7dbc02b9e2bb278b7bb13c160e04e23a16dd04f9d732da20a",
         "signature": "08c4a97a324b82f7dbc02b9e2bb278b7bb13c160e04e23a16dd04f9d732da20a",
         "affectsGlobalScope": true
+      },
+      "../node_modules/@types/json2csv/transforms/base.d.ts": {
+        "version": "1f8d0a5850680d5109e64a5f85d980895f8975f0e25872c32a7639ef8a5a0867",
+        "signature": "1f8d0a5850680d5109e64a5f85d980895f8975f0e25872c32a7639ef8a5a0867",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/json2csv/transforms/flatten.d.ts": {
+        "version": "e31130ce795491d398caa6bed0f520c1c9039fc6dc3e54c06b025c7cdb541369",
+        "signature": "e31130ce795491d398caa6bed0f520c1c9039fc6dc3e54c06b025c7cdb541369",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/json2csv/transforms/unwind.d.ts": {
+        "version": "8f4db9aeb81bf931a5f6af477852debd7648ed92e75724e92d70b8a6015162a2",
+        "signature": "8f4db9aeb81bf931a5f6af477852debd7648ed92e75724e92d70b8a6015162a2",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/json2csv/transforms/index.d.ts": {
+        "version": "00caf9c6aca65efdb52b6ca460f3e65fa0d4ac851b3c945071bbb2609dcfb8ff",
+        "signature": "00caf9c6aca65efdb52b6ca460f3e65fa0d4ac851b3c945071bbb2609dcfb8ff",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/json2csv/json2csvbase.d.ts": {
+        "version": "808e45e801940564c5f5645e297d548071ab81577073481c406077ea3f54830e",
+        "signature": "808e45e801940564c5f5645e297d548071ab81577073481c406077ea3f54830e",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/json2csv/json2csvparser.d.ts": {
+        "version": "0a3749c5d23b33021fca2c937e4ad67315a462c53e48ac5dd18dc7d4fbb46cd8",
+        "signature": "0a3749c5d23b33021fca2c937e4ad67315a462c53e48ac5dd18dc7d4fbb46cd8",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/json2csv/json2csvtransform.d.ts": {
+        "version": "5d65eef4fd60dcaa5721a1cf97dd4e8d1d0445093ecefa09a28815661f64f374",
+        "signature": "5d65eef4fd60dcaa5721a1cf97dd4e8d1d0445093ecefa09a28815661f64f374",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/json2csv/json2csvasyncparser.d.ts": {
+        "version": "20623a1b3f44d66445961a5fc04a0b2ebecd7419baeafbbfceab604415d66c2c",
+        "signature": "20623a1b3f44d66445961a5fc04a0b2ebecd7419baeafbbfceab604415d66c2c",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/json2csv/index.d.ts": {
+        "version": "282ebe659b6717361da15d5e1711f34025a316eee666526b1f9c46181cabf9e6",
+        "signature": "282ebe659b6717361da15d5e1711f34025a316eee666526b1f9c46181cabf9e6",
+        "affectsGlobalScope": false
       },
       "../node_modules/@types/json5/index.d.ts": {
         "version": "96d14f21b7652903852eef49379d04dbda28c16ed36468f8c9fa08f7c14c9538",
@@ -4337,6 +4392,41 @@
       "../node_modules/@types/jest/index.d.ts": [
         "../node_modules/jest-diff/build/index.d.ts",
         "../node_modules/pretty-format/build/index.d.ts"
+      ],
+      "../node_modules/@types/json2csv/index.d.ts": [
+        "../node_modules/@types/json2csv/json2csvasyncparser.d.ts",
+        "../node_modules/@types/json2csv/json2csvbase.d.ts",
+        "../node_modules/@types/json2csv/json2csvparser.d.ts",
+        "../node_modules/@types/json2csv/json2csvtransform.d.ts",
+        "../node_modules/@types/json2csv/transforms/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts"
+      ],
+      "../node_modules/@types/json2csv/json2csvasyncparser.d.ts": [
+        "../node_modules/@types/json2csv/json2csvbase.d.ts",
+        "../node_modules/@types/json2csv/json2csvtransform.d.ts",
+        "../node_modules/@types/node/stream.d.ts"
+      ],
+      "../node_modules/@types/json2csv/json2csvbase.d.ts": [
+        "../node_modules/@types/json2csv/transforms/index.d.ts"
+      ],
+      "../node_modules/@types/json2csv/json2csvparser.d.ts": [
+        "../node_modules/@types/json2csv/json2csvbase.d.ts"
+      ],
+      "../node_modules/@types/json2csv/json2csvtransform.d.ts": [
+        "../node_modules/@types/json2csv/json2csvbase.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts"
+      ],
+      "../node_modules/@types/json2csv/transforms/flatten.d.ts": [
+        "../node_modules/@types/json2csv/transforms/base.d.ts"
+      ],
+      "../node_modules/@types/json2csv/transforms/index.d.ts": [
+        "../node_modules/@types/json2csv/transforms/base.d.ts",
+        "../node_modules/@types/json2csv/transforms/flatten.d.ts",
+        "../node_modules/@types/json2csv/transforms/unwind.d.ts"
+      ],
+      "../node_modules/@types/json2csv/transforms/unwind.d.ts": [
+        "../node_modules/@types/json2csv/transforms/base.d.ts"
       ],
       "../node_modules/@types/node/base.d.ts": [
         "../node_modules/@types/node/assert.d.ts",
@@ -6024,11 +6114,10 @@
       ],
       "../src/app.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/typeorm/index.d.ts",
-        "../node_modules/typeorm/index.d.ts",
-        "../src/dtos/employee.dto.ts",
-        "../src/hydrators/employee.hydrator.ts",
-        "../src/model/employee.entity.ts"
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/uuid/index.d.ts",
+        "../node_modules/json-2-csv/lib/converter.d.ts",
+        "../src/dtos/employee.dto.ts"
       ],
       "../src/config/config.service.ts": [
         "../node_modules/@nestjs/typeorm/index.d.ts"
@@ -6890,6 +6979,41 @@
       "../node_modules/@types/jest/index.d.ts": [
         "../node_modules/jest-diff/build/index.d.ts",
         "../node_modules/pretty-format/build/index.d.ts"
+      ],
+      "../node_modules/@types/json2csv/index.d.ts": [
+        "../node_modules/@types/json2csv/json2csvasyncparser.d.ts",
+        "../node_modules/@types/json2csv/json2csvbase.d.ts",
+        "../node_modules/@types/json2csv/json2csvparser.d.ts",
+        "../node_modules/@types/json2csv/json2csvtransform.d.ts",
+        "../node_modules/@types/json2csv/transforms/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts"
+      ],
+      "../node_modules/@types/json2csv/json2csvasyncparser.d.ts": [
+        "../node_modules/@types/json2csv/json2csvbase.d.ts",
+        "../node_modules/@types/json2csv/json2csvtransform.d.ts",
+        "../node_modules/@types/node/stream.d.ts"
+      ],
+      "../node_modules/@types/json2csv/json2csvbase.d.ts": [
+        "../node_modules/@types/json2csv/transforms/index.d.ts"
+      ],
+      "../node_modules/@types/json2csv/json2csvparser.d.ts": [
+        "../node_modules/@types/json2csv/json2csvbase.d.ts"
+      ],
+      "../node_modules/@types/json2csv/json2csvtransform.d.ts": [
+        "../node_modules/@types/json2csv/json2csvbase.d.ts",
+        "../node_modules/@types/node/index.d.ts",
+        "../node_modules/@types/node/stream.d.ts"
+      ],
+      "../node_modules/@types/json2csv/transforms/flatten.d.ts": [
+        "../node_modules/@types/json2csv/transforms/base.d.ts"
+      ],
+      "../node_modules/@types/json2csv/transforms/index.d.ts": [
+        "../node_modules/@types/json2csv/transforms/base.d.ts",
+        "../node_modules/@types/json2csv/transforms/flatten.d.ts",
+        "../node_modules/@types/json2csv/transforms/unwind.d.ts"
+      ],
+      "../node_modules/@types/json2csv/transforms/unwind.d.ts": [
+        "../node_modules/@types/json2csv/transforms/base.d.ts"
       ],
       "../node_modules/@types/node/base.d.ts": [
         "../node_modules/@types/node/assert.d.ts",
@@ -8562,12 +8686,10 @@
       ],
       "../src/app.controller.ts": [
         "../src/app.service.ts",
-        "../src/dtos/employee.dto.ts",
-        "../src/model/employee.entity.ts"
+        "../src/dtos/employee.dto.ts"
       ],
       "../src/app.service.ts": [
-        "../src/dtos/employee.dto.ts",
-        "../src/model/employee.entity.ts"
+        "../src/dtos/employee.dto.ts"
       ],
       "../src/config/config.service.ts": [
         "../node_modules/@nestjs/typeorm/index.d.ts"

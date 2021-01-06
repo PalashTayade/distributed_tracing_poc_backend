@@ -1,9 +1,10 @@
-import { Employees } from './model/employee.entity';
-import { EmployeesDto } from './dtos/employee.dto';
+import { EmployeesDto } from "./dtos/employee.dto";
 export declare class AppService {
-    constructor();
-    getEmployees(): Promise<Employees[]>;
-    createEmployee(employeeDto: EmployeesDto): Promise<Employees>;
-    updateEmployee(employeeDto: EmployeesDto): Promise<void>;
-    saveToDb(employeeDto: EmployeesDto): Promise<any>;
+    getEmployees(): string;
+    createEmployee(employeeDto: EmployeesDto): void;
+    updateEmployee(employeeDto: EmployeesDto): void;
+    getFromFile(): string;
+    saveToFile(employeeDto: EmployeesDto): Promise<void>;
+    updateFile(employeeDto: EmployeesDto): Promise<void>;
+    private csvJSON;
 }
