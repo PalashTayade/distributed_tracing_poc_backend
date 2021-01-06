@@ -1,6 +1,6 @@
 export declare class EmployeesDto {
-    readonly firstName: string;
-    readonly lastName: string;
-    readonly email: string;
-    readonly isActive: boolean;
+    firstName: string;
+    lastName: string;
+    email: string;
+    isActive: boolean;
 }

@@ -1,7 +1,15 @@
-export declare class EmployeesDto {
-    readonly firstName: string;
-    readonly lastName: string;
-    readonly email: string;
-    readonly isActive:boolean;
+import { ApiProperty } from '@nestjs/swagger';
+export class EmployeesDto {
+     @ApiProperty()
+    firstName: string;
+
+    @ApiProperty()
+     lastName: string;
+
+     @ApiProperty()
+     email: string;
+     
+     @ApiProperty()
+     isActive:boolean;
 
 }
