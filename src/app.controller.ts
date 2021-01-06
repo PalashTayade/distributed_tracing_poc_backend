@@ -9,17 +9,15 @@ export class AppController {
 
   @Get()
   async getEmployees(): Promise<string> {
-    const employees =  await this.appService.getEmployees();
-    console.log(employees)
-    const result = JSON.stringify(employees);
-    return result;
+    return this.appService.getEmployees();
   }
+
   @Post()
-  createEmployess(@Body() employee: EmployeesDto): Promise<Employees> {
-    return this.appService.createEmployee(employee);
+  createEmployess(@Body() employee: EmployeesDto): void {
+    this.appService.createEmployee(employee);
   }
-  @Put()
-  updateEmployee(@Body() employee: EmployeesDto): Promise<void> {
-    return this.appService.updateEmployee(employee);
-  }
+  // @Put()
+  // updateEmployee(@Body() employee: EmployeesDto): Promise<void> {
+  //   return this.appService.updateEmployee(employee);
+  // }
 }
