@@ -16,6 +16,9 @@ export class AppService {
   createEmployee(employeeDto: EmployeesDto): void {
     this.saveToFile(employeeDto);
   }
+  updateEmployee(employeeDto: EmployeesDto): void {
+    this.updateFile(employeeDto);
+  }
 
   async saveToFile(employeeDto: EmployeesDto) {
     //read file
@@ -29,6 +32,26 @@ export class AppService {
     employeesData.push(employeeDto);
 
     // append records to file
+    json2csv(employeesData, function (err, csv) {
+      if (err) console.log(err);
+      writeFile("employee-database.csv", csv, function (err) {
+        if (err) throw err;
+      });
+    });
+  }
+
+  async updateFile(employeeDto: EmployeesDto) {
+    //read file
+    let employeesData = this.csvJSON(
+      readFileSync("employee-database.csv", "utf8")
+    );
+    let objIndex = employeesData.findIndex((obj => obj.email === employeeDto.email));
+
+    employeesData[objIndex].firstName = employeeDto.firstName;
+    employeesData[objIndex].lastName = employeeDto.lastName;
+    employeesData[objIndex].isActive = employeeDto.isActive;
+
+    // write records to file
     json2csv(employeesData, function (err, csv) {
       if (err) console.log(err);
       writeFile("employee-database.csv", csv, function (err) {

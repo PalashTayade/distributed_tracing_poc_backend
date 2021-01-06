@@ -16,8 +16,8 @@ export class AppController {
   createEmployess(@Body() employee: EmployeesDto): void {
     this.appService.createEmployee(employee);
   }
-  // @Put()
-  // updateEmployee(@Body() employee: EmployeesDto): Promise<void> {
-  //   return this.appService.updateEmployee(employee);
-  // }
+  @Put()
+  updateEmployee(@Body() employee: EmployeesDto): void {
+  this.appService.updateEmployee(employee);
+  }
 }
