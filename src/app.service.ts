@@ -1,4 +1,4 @@
-import {  Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { EmployeesDto } from "./dtos/employee.dto";
 import { writeFile, readFile, readFileSync } from "fs";
 import { v4 as uuid } from "uuid";
@@ -6,11 +6,8 @@ import { json2csv } from "json-2-csv";
 
 @Injectable()
 export class AppService {
-
   getEmployees(): string {
-    return JSON.stringify(
-      this.csvJSON(readFileSync("employee-database.csv", "utf8"))
-    );
+    return this.getFromFile();
   }
 
   createEmployee(employeeDto: EmployeesDto): void {
@@ -18,6 +15,17 @@ export class AppService {
   }
   updateEmployee(employeeDto: EmployeesDto): void {
     this.updateFile(employeeDto);
+  }
+
+  getFromFile(): string {
+    let employeesData = this.csvJSON(
+      readFileSync("employee-database.csv", "utf8")
+    );
+
+    let activeEmployee = employeesData.filter(function (obj) {
+      return obj.isActive !== 'false' ;
+    });
+    return JSON.stringify(activeEmployee);
   }
 
   async saveToFile(employeeDto: EmployeesDto) {
@@ -45,7 +53,9 @@ export class AppService {
     let employeesData = this.csvJSON(
       readFileSync("employee-database.csv", "utf8")
     );
-    let objIndex = employeesData.findIndex((obj => obj.email === employeeDto.email));
+    let objIndex = employeesData.findIndex(
+      (obj) => obj.email === employeeDto.email
+    );
 
     employeesData[objIndex].firstName = employeeDto.firstName;
     employeesData[objIndex].lastName = employeeDto.lastName;
@@ -59,7 +69,7 @@ export class AppService {
       });
     });
   }
-  
+
   private csvJSON(csv: string) {
     var lines = csv.split("\n");
 
