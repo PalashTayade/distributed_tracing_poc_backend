@@ -1,5 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 export class EmployeesDto {
+    id : string;
+    
      @ApiProperty()
     firstName: string;
 

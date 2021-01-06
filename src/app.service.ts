@@ -1,59 +1,93 @@
-import { Employees } from './model/employee.entity';
-import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
-import { EmployeeHydrator } from './hydrators/employee.hydrator';
-import { InjectRepository } from '@nestjs/typeorm';
-import { EmployeesDto } from './dtos/employee.dto';
+import { Injectable } from "@nestjs/common";
+import { EmployeesDto } from "./dtos/employee.dto";
+import { writeFile, readFile, readFileSync } from "fs";
+import { v4 as uuid } from "uuid";
+import { json2csv } from "json-2-csv";
 
 @Injectable()
 export class AppService {
-  constructor(
-   // private readonly hydrator: EmployeeHydrator,
-
-  //  @InjectRepository(Employees)
-  //  private readonly repository: Repository<Employees>,
-  ) {}
-
-  async getEmployees(): Promise<Employees[]> {
-    /* const query = this.repository
-      .createQueryBuilder('employees')
-      .where('isactive = true');
-    const result = await query.getMany();
-    return result; */
-    return null;
+  getEmployees(): string {
+    return this.getFromFile();
   }
 
-  async createEmployee(employeeDto: EmployeesDto): Promise<Employees> {
-    const dbEntity = await this.saveToDb(employeeDto);
-    return dbEntity;
+  createEmployee(employeeDto: EmployeesDto): void {
+    this.saveToFile(employeeDto);
+  }
+  updateEmployee(employeeDto: EmployeesDto): void {
+    this.updateFile(employeeDto);
   }
 
-  async updateEmployee(employeeDto: EmployeesDto): Promise<void> {
-    // const query = this.repository
-    //   .createQueryBuilder('employees')
-    //   .update(Employees)
-    //   .set({
-    //     firstName: employeeDto.firstName,
-    //     lastName: employeeDto.lastName,
-    //     isActive: employeeDto.isActive,
-    //   })
-    //   .where('email = :email', {
-    //     email: employeeDto.email,
-    //   })
-    //   .execute();
+  getFromFile(): string {
+    let employeesData = this.csvJSON(
+      readFileSync("employee-database.csv", "utf8")
+    );
+
+    let activeEmployee = employeesData.filter(function (obj) {
+      return obj.isActive !== 'false' ;
+    });
+    return JSON.stringify(activeEmployee);
   }
 
-  async saveToDb(employeeDto: EmployeesDto) {
-  //   const entityToDb = this.hydrator.hydrate(employeeDto);
-  //   try {
-  //     const data = await this.repository.save(entityToDb);
-  //     console.log(`Successfully saved record to db`);
-  //     return data;
-  //   } catch (err) {
-  //     console.log(`Failed to save record to db`);
-  //     console.error(err);
-  //     throw err;
-  //   }
-  return null;
-   }
+  async saveToFile(employeeDto: EmployeesDto) {
+    //read file
+    let employeesData = this.csvJSON(
+      readFileSync("employee-database.csv", "utf8")
+    );
+
+    //assign a uuid before saving the employee
+    employeeDto.id = uuid();
+    employeeDto.isActive = true;
+    employeesData.push(employeeDto);
+
+    // append records to file
+    json2csv(employeesData, function (err, csv) {
+      if (err) console.log(err);
+      writeFile("employee-database.csv", csv, function (err) {
+        if (err) throw err;
+      });
+    });
+  }
+
+  async updateFile(employeeDto: EmployeesDto) {
+    //read file
+    let employeesData = this.csvJSON(
+      readFileSync("employee-database.csv", "utf8")
+    );
+    let objIndex = employeesData.findIndex(
+      (obj) => obj.email === employeeDto.email
+    );
+
+    employeesData[objIndex].firstName = employeeDto.firstName;
+    employeesData[objIndex].lastName = employeeDto.lastName;
+    employeesData[objIndex].isActive = employeeDto.isActive;
+
+    // write records to file
+    json2csv(employeesData, function (err, csv) {
+      if (err) console.log(err);
+      writeFile("employee-database.csv", csv, function (err) {
+        if (err) throw err;
+      });
+    });
+  }
+
+  private csvJSON(csv: string) {
+    var lines = csv.split("\n");
+
+    var result = [];
+
+    var headers = lines[0].split(",");
+
+    for (var i = 1; i < lines.length; i++) {
+      var obj = {};
+      var currentline = lines[i].split(",");
+
+      for (var j = 0; j < headers.length; j++) {
+        obj[headers[j]] = currentline[j];
+      }
+
+      result.push(obj);
+    }
+
+    return result;
+  }
 }
