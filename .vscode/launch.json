@@ -1,0 +1,35 @@
+{
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "distributed_tracing_poc_backend:HelloWorldFunction (nodejs12.x)",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "distributed_tracing_poc_backend/template.yaml",
+                "logicalId": "HelloWorldFunction"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {}
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "API distributed_tracing_poc_backend:HelloWorldFunction (nodejs12.x)",
+            "invokeTarget": {
+                "target": "api",
+                "templatePath": "distributed_tracing_poc_backend/template.yaml",
+                "logicalId": "HelloWorldFunction"
+            },
+            "api": {
+                "path": "/hello",
+                "httpMethod": "get",
+                "payload": {
+                    "json": {}
+                }
+            }
+        }
+    ]
+}

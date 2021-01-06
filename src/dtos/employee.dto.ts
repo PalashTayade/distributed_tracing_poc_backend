@@ -1,8 +1,17 @@
-export declare class EmployeesDto {
+import { ApiProperty } from '@nestjs/swagger';
+export class EmployeesDto {
     id : string;
+    
+     @ApiProperty()
     firstName: string;
-    lastName: string;
-    email: string;
-    isActive:boolean;
+
+    @ApiProperty()
+     lastName: string;
+
+     @ApiProperty()
+     email: string;
+     
+     @ApiProperty()
+     isActive:boolean;
 
 }
