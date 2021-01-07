@@ -54,7 +54,7 @@ export class AppService {
       readFileSync("employee-database.csv", "utf8")
     );
     let objIndex = employeesData.findIndex(
-      (obj) => obj.email === employeeDto.email
+      (obj) => obj.id === employeeDto.id
     );
 
     employeesData[objIndex].firstName = employeeDto.firstName;
