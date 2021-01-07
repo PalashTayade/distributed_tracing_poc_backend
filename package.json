@@ -28,6 +28,8 @@
     "@nestjs/platform-express": "^7.5.1",
     "@nestjs/swagger": "^4.7.9",
     "@nestjs/typeorm": "^7.1.5",
+    "@sentry/node": "^5.29.2",
+    "@sentry/tracing": "^5.29.2",
     "@types/uuid": "8.3.0",
     "json-2-csv": "^3.10.1",
     "pg": "^8.5.1",

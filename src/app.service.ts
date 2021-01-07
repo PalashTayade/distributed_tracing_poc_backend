@@ -3,11 +3,30 @@ import { EmployeesDto } from "./dtos/employee.dto";
 import { writeFile, readFile, readFileSync } from "fs";
 import { v4 as uuid } from "uuid";
 import { json2csv } from "json-2-csv";
+import * as Sentry from "@sentry/node";
+import { exception } from "console";
+
 
 @Injectable()
 export class AppService {
   getEmployees(): string {
-    return this.getFromFile();
+    let result = ""
+    const transaction = Sentry.startTransaction({
+      op: "test",
+      name: "My third Test Transaction",
+    });
+  
+    setTimeout(() => {
+      try {
+        result = this.getFromFile();
+      } catch (e) {
+        Sentry.captureException(e);
+      } finally {
+        transaction.finish();
+      }
+    }, 99);
+
+    return result;
   }
 
   createEmployee(employeeDto: EmployeesDto): void {
