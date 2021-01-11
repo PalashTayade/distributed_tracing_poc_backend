@@ -1,8 +1,9 @@
-import { Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { EmployeesDto } from "./dtos/employee.dto";
 import { writeFile, readFile, readFileSync } from "fs";
 import { v4 as uuid } from "uuid";
 import { json2csv } from "json-2-csv";
+import * as Sentry from "@sentry/node";
 
 @Injectable()
 export class AppService {
@@ -16,6 +17,16 @@ export class AppService {
   updateEmployee(employeeDto: EmployeesDto): void {
     this.updateFile(employeeDto);
   }
+  validateEmployee(employeeDto: EmployeesDto): boolean {
+    try {
+      if (employeeDto.id == "") {
+        return false;
+      }
+    } catch (error) {
+      Sentry.captureException(error);
+    }
+    return true;
+  }
 
   getFromFile(): string {
     let employeesData = this.csvJSON(
@@ -23,7 +34,7 @@ export class AppService {
     );
 
     let activeEmployee = employeesData.filter(function (obj) {
-      return obj.isActive !== 'false' ;
+      return obj.isActive !== "false";
     });
     return JSON.stringify(activeEmployee);
   }
@@ -57,6 +68,9 @@ export class AppService {
       (obj) => obj.id === employeeDto.id
     );
 
+    if (objIndex == -1) {
+      throw new HttpException('Bad request - Employeee not found', HttpStatus.BAD_REQUEST);
+    }
     employeesData[objIndex].firstName = employeeDto.firstName;
     employeesData[objIndex].lastName = employeeDto.lastName;
     employeesData[objIndex].isActive = employeeDto.isActive;
