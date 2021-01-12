@@ -11,8 +11,8 @@ export class AppService {
     return this.getFromFile();
   }
 
-  createEmployee(employeeDto: EmployeesDto): void {
-    this.saveToFile(employeeDto);
+  createEmployee(employeeDto: EmployeesDto) {
+     this.saveToFile(employeeDto);
   }
   updateEmployee(employeeDto: EmployeesDto): void {
     this.updateFile(employeeDto);
@@ -44,6 +44,10 @@ export class AppService {
     let employeesData = this.csvJSON(
       readFileSync("employee-database.csv", "utf8")
     );
+
+    if (employeeDto.email === "") {
+      throw new HttpException('Bad request - Email Id not provided', HttpStatus.BAD_REQUEST);
+    }
 
     //assign a uuid before saving the employee
     employeeDto.id = uuid();
