@@ -12,7 +12,7 @@ export class AppService {
   }
 
   createEmployee(employeeDto: EmployeesDto) {
-     this.saveToFile(employeeDto);
+    this.saveToFile(employeeDto);
   }
   updateEmployee(employeeDto: EmployeesDto): void {
     this.updateFile(employeeDto);
@@ -39,14 +39,17 @@ export class AppService {
     return JSON.stringify(activeEmployee);
   }
 
-  async saveToFile(employeeDto: EmployeesDto) {
+  async saveToFile(employeeDto: EmployeesDto): void {
     //read file
     let employeesData = this.csvJSON(
       readFileSync("employee-database.csv", "utf8")
     );
 
     if (employeeDto.email === "") {
-      throw new HttpException('Bad request - Email Id not provided', HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        "Bad request - Email Id not provided",
+        HttpStatus.BAD_REQUEST
+      );
     }
 
     //assign a uuid before saving the employee
@@ -68,12 +71,13 @@ export class AppService {
     let employeesData = this.csvJSON(
       readFileSync("employee-database.csv", "utf8")
     );
-    let objIndex = employeesData.findIndex(
-      (obj) => obj.id === employeeDto.id
-    );
+    let objIndex = employeesData.findIndex((obj) => obj.id === employeeDto.id);
 
     if (objIndex == -1) {
-      throw new HttpException('Bad request - Employeee not found', HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        "Bad request - Employeee not found",
+        HttpStatus.BAD_REQUEST
+      );
     }
     employeesData[objIndex].firstName = employeeDto.firstName;
     employeesData[objIndex].lastName = employeeDto.lastName;
