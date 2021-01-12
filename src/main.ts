@@ -3,9 +3,6 @@ import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import * as Sentry from "@sentry/node";
-import * as Tracing from "@sentry/tracing";
-import { trace } from "console";
-import { Integrations as TracingIntegrations } from "@sentry/tracing";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

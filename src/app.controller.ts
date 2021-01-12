@@ -12,9 +12,14 @@ export class AppController {
     @Headers("sentry-trace") traceId: string
   ): Promise<string> {
     let result = "";
+
+    Sentry.configureScope((scope) => {
+      scope.setTag("trace_id", traceId);
+    });
+
     const transaction = Sentry.startTransaction({
-      op: "BE - Transaction : Get employees",
-      name: "BE - Transaction : Inside GET controller",
+      op: "Controller.Service.Method.GetEmployees",
+      name: "BE - Transaction : Controller.Service.Method.GetEmployees",
       traceId: traceId,
     });
 
@@ -38,17 +43,22 @@ export class AppController {
   createEmployess(
     @Headers("sentry-trace") traceId: string,
     @Body() employee: EmployeesDto
-  ): void {
+  ) {
+
+    Sentry.configureScope((scope) => {
+      scope.setTag("trace_id", traceId);
+    });
+
     const transaction = Sentry.startTransaction({
-      op: "BE - Transaction : Create employees",
-      name: "BE - Transaction : Inside POST controller",
+      op: "Controller.Service.Method.CreateEmployees",
+      name: "BE - Transaction : Controller.Service.Method.CreateEmployees",
       traceId: traceId,
     });
 
     try {
       const span1 = transaction.startChild({
-        op: "BE - Span : Span 1",
-        description: `span inside POST controller - creating employee`,
+        op: "Controller.Service.Method.CreateEmployees",
+        description: `BE - Span: Controller.Service.Method.CreateEmployees`,
       });
       this.appService.createEmployee(employee);
       span1.finish();
@@ -56,21 +66,25 @@ export class AppController {
       transaction.finish();
     }
   }
-  
+
   @Put()
   updateEmployee(
     @Headers("sentry-trace") traceId: string,
     @Body() employee: EmployeesDto
   ): void {
-    const transaction = Sentry.startTransaction({
-      op: "BE - Transaction : Update employees",
-      name: "BE - Transaction : Inside PUT controller",
-      traceId: traceId,
+
+    Sentry.configureScope((scope) => {
+      scope.setTag("trace_id", traceId);
     });
 
+    const transaction = Sentry.startTransaction({
+      op: "BE - Transaction : Controller.Service.Method.UpdateEmployee",
+      name: "BE - Transaction : Controller.Service.Method.UpdateEmployee",
+      traceId: traceId,
+    });
     const span1 = transaction.startChild({
-      op: "BE - Span : Span 1",
-      description: `span inside PUT controller - validating employee update request`,
+      op: "BE - Span : Controller.Service.Method.ValidateEmployee",
+      description: `BE - Span : Controller.Service.Method.ValidateEmployee`,
     });
     try {
       let isValidRequest = this.appService.validateEmployee(employee);
@@ -78,8 +92,8 @@ export class AppController {
 
       if (isValidRequest) {
         const span2 = transaction.startChild({
-          op: "BE - Span : Span 1",
-          description: `span inside PUT controller - updating employee`,
+          op: "BE - Span : Controller.Service.Method.UpdateEmployee",
+          description: `BE - Span : Controller.Service.Method.UpdateEmployee`,
         });
         this.appService.updateEmployee(employee);
         span2.finish();
