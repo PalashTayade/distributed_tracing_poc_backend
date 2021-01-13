@@ -44,7 +44,6 @@ export class AppController {
     @Headers("sentry-trace") traceId: string,
     @Body() employee: EmployeesDto
   ) {
-
     Sentry.configureScope((scope) => {
       scope.setTag("trace_id", traceId);
     });
@@ -54,7 +53,6 @@ export class AppController {
       name: "BE - Transaction : Controller.Service.Method.CreateEmployees",
       traceId: traceId,
     });
-
     try {
       const span1 = transaction.startChild({
         op: "Controller.Service.Method.CreateEmployees",
@@ -62,6 +60,9 @@ export class AppController {
       });
       this.appService.createEmployee(employee);
       span1.finish();
+    } catch (errors) {
+      Sentry.captureException(errors);
+      throw errors;
     } finally {
       transaction.finish();
     }
@@ -72,7 +73,6 @@ export class AppController {
     @Headers("sentry-trace") traceId: string,
     @Body() employee: EmployeesDto
   ): void {
-
     Sentry.configureScope((scope) => {
       scope.setTag("trace_id", traceId);
     });

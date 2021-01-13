@@ -39,7 +39,7 @@ export class AppService {
     return JSON.stringify(activeEmployee);
   }
 
-  async saveToFile(employeeDto: EmployeesDto) {
+  saveToFile(employeeDto: EmployeesDto) {
     //read file
     let employeesData = this.csvJSON(
       readFileSync("employee-database.csv", "utf8")
@@ -63,7 +63,7 @@ export class AppService {
     });
   }
 
-  async updateFile(employeeDto: EmployeesDto) {
+   updateFile(employeeDto: EmployeesDto) {
     //read file
     let employeesData = this.csvJSON(
       readFileSync("employee-database.csv", "utf8")
